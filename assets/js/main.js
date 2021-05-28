@@ -97,7 +97,23 @@ const weaponsArray = [
     weight: 20,
   },
 ];
-const roomsArray = [];
+const roomsArray = [
+  { name: 'Dining Room' },
+  { name: 'Conservatory' },
+  { name: 'Kitchen' },
+  { name: 'Study' },
+  { name: 'Library' },
+  { name: 'Billiard Room' },
+  { name: 'Lounge' },
+  { name: 'Ballroom' },
+  { name: 'Hall' },
+  { name: 'Spa' },
+  { name: 'Living Room' },
+  { name: 'Observatory' },
+  { name: 'Theater' },
+  { name: 'Guest House' },
+  { name: 'Patio' },
+];
 
 function selectRandom(arr) {
   const { floor, random } = Math;
@@ -106,16 +122,23 @@ function selectRandom(arr) {
 
 function pickMistery() {
   let suspect = selectRandom(suspectsArray);
+  let { firstName, lastName, color, description, occupation, img } = suspect;
   return {
-    firstName: suspect.firstName,
-    lastName: suspect.lastName,
+    firstName,
+    lastName,
+    color,
+    description,
+    occupation,
+    img,
     weapon: selectRandom(weaponsArray).name,
-    room: selectRandom(roomsArray).name,
+    room: selectRandom(roomsArray),
   };
 }
 
 function revealMystery(obj) {
-  return `${obj.firstName} ${obj.lastName} killed Mr. Boddy using the ${obj.weapon} in the ${obj.room}!`;
+  let { color, firstName, lastName, weapon, room } = obj;
+  let heading = `<span style="color: ${color}">${firstName} ${lastName}</span> killed Mr. Boddy using the ${weapon} in the ${room}!`;
 }
 
 console.log(selectRandom(suspectsArray));
+console.log(pickMistery());
