@@ -131,14 +131,15 @@ function pickMistery() {
     occupation,
     img,
     weapon: selectRandom(weaponsArray).name,
-    room: selectRandom(roomsArray),
+    room: selectRandom(roomsArray).name,
   };
 }
 
 function revealMystery(obj) {
   let { color, firstName, lastName, weapon, room } = obj;
-  let heading = `<span style="color: ${color}">${firstName} ${lastName}</span> killed Mr. Boddy using the ${weapon} in the ${room}!`;
+  return `<span style="color: ${color}">${firstName} ${lastName}</span> killed Mr. Boddy using the ${weapon} in the ${room}!`;
 }
 
 console.log(selectRandom(suspectsArray));
 console.log(pickMistery());
+console.log(revealMystery(pickMistery()));
