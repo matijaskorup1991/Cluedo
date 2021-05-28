@@ -1,5 +1,9 @@
 let $ = (el) => document.querySelector(el);
-let $$ = (el) => document.querySelectorAll(el);
+let $$ = (el) => Array.from(document.querySelectorAll(el));
+let $on = (el, ev, fn) =>
+  Array.isArray(el)
+    ? el.forEach((o) => $on(o, ev, fn))
+    : el.addEventListener(ev, fn);
 
 const suspectsArray = [
   {
@@ -122,7 +126,8 @@ function selectRandom(arr) {
 
 function pickMistery() {
   let suspect = selectRandom(suspectsArray);
-  let { firstName, lastName, color, description, occupation, img } = suspect;
+  let { firstName, lastName, color, description, occupation, img, age } =
+    suspect;
   return {
     firstName,
     lastName,
@@ -130,16 +135,26 @@ function pickMistery() {
     description,
     occupation,
     img,
+    age,
     weapon: selectRandom(weaponsArray).name,
     room: selectRandom(roomsArray).name,
   };
 }
 
 function revealMystery(obj) {
-  let { color, firstName, lastName, weapon, room } = obj;
-  return `<span style="color: ${color}">${firstName} ${lastName}</span> killed Mr. Boddy using the ${weapon} in the ${room}!`;
+  let { color, firstName, lastName, weapon, occupation, room, img, age } = obj;
+  $(
+    '.kiler'
+  ).innerHTML = `<span style="color: ${color}">${firstName} ${lastName}</span> killed Mr. Boddy using the ${weapon} in the ${room}!`;
+  $('.img').setAttribute('src', img);
+  $('.kiler-name').innerHTML = `${firstName} ${lastName} (${age})`;
+  $('.kiler-desc').innerHTML = occupation;
 }
 
 console.log(selectRandom(suspectsArray));
 console.log(pickMistery());
 console.log(revealMystery(pickMistery()));
+
+$on($('.run-game'), 'click', () => {
+  revealMystery(pickMistery());
+});

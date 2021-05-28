@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Odibee Sans', cursive;
+  background-color: grey;
 }
 
 h1 {
@@ -17,6 +18,10 @@ h1 {
   justify-content: center;
 }
 
+.kiler {
+  margin-top: 2rem;
+  text-align: center;
+}
 .card {
   margin-right: 1rem;
   height: 400px;
@@ -24,6 +29,7 @@ h1 {
   border: 2px solid black;
   border-radius: 10px;
   overflow: hidden;
+  background-color: brown;
 }
 
 .weapon-room {
@@ -32,19 +38,10 @@ h1 {
   justify-content: center;
 }
 
-.weapon-room > div {
-  width: 300px;
-  height: 100px;
-  margin-bottom: 1rem;
-  border: 2px solid black;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
 .img-holder {
   padding: 8px;
   height: 200px;
-  background-color: azure;
+  /* background-color: brown; */
 }
 .img-holder > img {
   width: 100%;
@@ -58,4 +55,26 @@ h1 {
   width: 90%;
   margin: 10px auto 10px auto;
   border-radius: 10px;
+}
+
+.kiler-desc {
+  text-align: center;
+  padding: 0.5rem;
+  margin: 10px;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.weapon,
+.room {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  overflow: hidden;
 }
