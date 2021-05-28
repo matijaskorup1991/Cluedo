@@ -153,10 +153,6 @@ function revealMystery(obj) {
   $('.room').innerHTML = room;
 }
 
-console.log(selectRandom(suspectsArray));
-console.log(pickMistery());
-console.log(revealMystery(pickMistery()));
-
 $on($('.run-game'), 'click', () => {
   $('#game').style.display = 'block';
   revealMystery(pickMistery());
