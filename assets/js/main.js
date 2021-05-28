@@ -149,6 +149,8 @@ function revealMystery(obj) {
   $('.img').setAttribute('src', img);
   $('.kiler-name').innerHTML = `${firstName} ${lastName} (${age})`;
   $('.kiler-desc').innerHTML = occupation;
+  $('.weapon').innerHTML = weapon;
+  $('.room').innerHTML = room;
 }
 
 console.log(selectRandom(suspectsArray));
@@ -156,5 +158,6 @@ console.log(pickMistery());
 console.log(revealMystery(pickMistery()));
 
 $on($('.run-game'), 'click', () => {
+  $('#game').style.display = 'block';
   revealMystery(pickMistery());
 });
